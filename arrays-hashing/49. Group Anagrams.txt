@@ -2,7 +2,6 @@
 # Patron: HashMap
 # Complejidad: 0(n * k log k)
 #link: https://leetcode.com/problems/group-anagrams/description/
-
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         result = {}
@@ -12,7 +11,6 @@ class Solution:
                 result[clave] = []
             result[clave].append(i)
         return list(result.values())
-
 #Porque funciona: 
 	La función sorted genera una clave única para las palabras con las mismas letras.
 	El diccionario agrupa todas las palabras que comparten la clave.
