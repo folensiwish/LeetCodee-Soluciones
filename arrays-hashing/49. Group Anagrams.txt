@@ -1,0 +1,24 @@
+# Problema: Group Anagrams
+# Patron: HashMap
+# Complejidad: 0(n * k log k)
+#link: https://leetcode.com/problems/group-anagrams/description/
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        result = {}
+        for i in strs:
+            clave = "".join(sorted(i))
+            if clave not in result:
+                result[clave] = []
+            result[clave].append(i)
+        return list(result.values())
+
+#Porque funciona: 
+	La función sorted genera una clave única para las palabras con las mismas letras.
+	El diccionario agrupa todas las palabras que comparten la clave.
+#Explicacion paso a paso:
+	1. Tener que resolver como encontrar la clave de la palabra con las palabras desordenadas, en este acercamiento lo que decidí es ordenar palabras.
+	2. Una vez ordenada la palabra usamos la clave para agrupar las palabras, por defecto el diccionario agrupa automáticamente porque las palabras que 		comparten la misma clave se agrupan en el mismo canasto
+	3.Tenia el caso de que si la clave no existe aun en el diccionario, inicializo su lista vacia para poder agregar el primer elemento para 			evitar que el programa se interrumpa.
+	4. Una vez verificado que el diccionario no tiene una clave, agregamos al diccionario el valor según la clave.
+	5. Capturado los elementos de la lista y agrupados en el diccionario por la clave, retornamos el diccionario convirtiéndolo en lista invocando la 	   función values del diccionario. Para cumplir con el output requerido en la ejecución del problema.
